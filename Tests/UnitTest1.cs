@@ -20,7 +20,7 @@ namespace Tests
         [Test]
         public void Test1()
         {
-            User currentUser = new User("saidmurodtestepam@gmail.com", "x@iysu27");
+            User currentUser = UserCreator.FirstUserCredentials();
             LoginPage loginPage = new LoginPage(driver);
             var mainPage = loginPage.Login(currentUser);
             mainPage.SendEmail("saidmurod11@gmail.com", "Job ", "Hello I will pay you 2.000.000");
