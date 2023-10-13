@@ -4,12 +4,12 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 
-namespace Core
+namespace Core.Driver
 {
-    public enum Drivers 
+    public enum Drivers
     {
         Chrome,
-        Edge, 
+        Edge,
         Firefox
     }
 
