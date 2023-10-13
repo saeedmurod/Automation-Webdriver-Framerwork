@@ -11,5 +11,6 @@ namespace Core
     {
         public string Browser { get; set; }
         public string Log { get; set; }
+
     }
 }

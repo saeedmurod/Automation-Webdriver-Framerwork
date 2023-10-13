@@ -16,6 +16,7 @@ namespace Pages
         private By SubjectOfEmail = By.CssSelector("input.aoT");
         private By EmailText = By.CssSelector("div.Am.Al.editable.LW-avf.tS-tW");
         private By SendEmailButton = By.XPath("//div[text()='Send']");
+        private By SentButton = By.XPath("//a[text()='Sent']");
 
         public MainPage(IWebDriver driver) 
         {
@@ -30,7 +31,18 @@ namespace Pages
             driver.FindElement(SubjectOfEmail).SendKeys($"{emailSubject}");
             driver.FindElement(EmailText).SendKeys($"{emailText}");
             driver.FindElement(SendEmailButton).Click();
+            
         }
 
+        public SentPage Check()
+        {
+            driver.FindElement(SentButton).Click();
+            return new SentPage(driver);
+        }
+
+        public string Url()
+        {
+            return driver.Url;
+        }
     }
 }
