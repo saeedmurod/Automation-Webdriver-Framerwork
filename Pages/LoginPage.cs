@@ -2,18 +2,17 @@
 
 namespace Pages
 {
-    public class LoginPage
+    public class LoginPage : BasePage
     {
-        private readonly IWebDriver driver;
+
+        public LoginPage(IWebDriver driver) : base(driver) 
+        {
+        }
+
+
 
         private readonly By LoginTextBox = By.Id("identifierId");
         private readonly By PassTextBox = By.XPath("//*[@id=\"password\"]/div[1]/div/div[1]/input");
-
-        public LoginPage(IWebDriver driver) 
-        {
-            this.driver = driver;
-        }
-
         public MainPage Login(User.User user)
         {
             driver.FindElement(LoginTextBox).SendKeys($"{user.Username}{Keys.Enter}");

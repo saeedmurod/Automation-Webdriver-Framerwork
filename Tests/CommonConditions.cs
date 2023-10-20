@@ -54,8 +54,8 @@ namespace Tests
                 User currentUser = UserCreator.FirstUserCredentials();
                 LoginPage loginPage = new LoginPage(driver);
                 var mainPage = loginPage.Login(currentUser);
-                string expectedUrl = "https://mail.google.com/mail/u/1/#inbox";
-                Assert.AreNotEqual(expectedUrl, mainPage.Url());
+                string expectedText = "Inbox";
+                Assert.AreNotEqual(expectedText, mainPage.InboxShower());
             }
 
             catch

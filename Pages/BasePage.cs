@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace Pages
 {
-    public class SentPage : BasePage
+    public class BasePage
     {
-        public SentPage(IWebDriver driver) : base(driver)
-        {
-        }
+        protected IWebDriver driver;
 
-        public string Url()
+        public BasePage(IWebDriver driver)
         {
-            return driver.Url;
+            this.driver = driver;
         }
-
     }
 }

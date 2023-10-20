@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Pages
 {
-    public class MainPage 
+    public class MainPage : BasePage
     {
-        private IWebDriver driver;
 
         private By ComposeButton = By.XPath("//div[text()='Compose']");
         private By ReceiverEmail = By.CssSelector("input.agP.aFw");
@@ -17,10 +16,10 @@ namespace Pages
         private By EmailText = By.CssSelector("div.Am.Al.editable.LW-avf.tS-tW");
         private By SendEmailButton = By.XPath("//div[text()='Send']");
         private By SentButton = By.XPath("//a[text()='Sent']");
+        private By Inbox = By.XPath("//a[text()='Inbox']");
 
-        public MainPage(IWebDriver driver) 
+        public MainPage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
         }
 
         public void SendEmail(string receiver, string emailSubject, string emailText)
@@ -40,9 +39,10 @@ namespace Pages
             return new SentPage(driver);
         }
 
-        public string Url()
+        public string InboxShower()
         {
-            return driver.Url;
+            string actualInbox = driver.FindElement(Inbox).Text;
+            return actualInbox;
         }
     }
 }
