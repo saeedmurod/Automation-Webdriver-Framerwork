@@ -70,6 +70,11 @@ namespace Tests
         }
 
 
-        
+        [TearDown]
+        public void Close()
+        {
+            driver.Quit();
+        }
+
     }
 }
