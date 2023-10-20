@@ -37,7 +37,7 @@ namespace Tests
 
             catch
             {
-                string filePath = "C:\\Users\\Saidmurod\\source\\repos\\Tests\\Tests\\Screenshots\\";
+                string filePath = @"..\..\..\Screenshots\";
                 DateTime time = DateTime.Now;
                 string dateToday = "_date_" + time.ToString("yyyy-MM-dd") + "_time_" + time.ToString("HH-mm-ss");
                 Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
@@ -55,12 +55,12 @@ namespace Tests
                 LoginPage loginPage = new LoginPage(driver);
                 var mainPage = loginPage.Login(currentUser);
                 string expectedText = "Inbox";
-                Assert.AreNotEqual(expectedText, mainPage.InboxShower());
+                Assert.AreEqual(expectedText, mainPage.InboxShower());
             }
 
             catch
             {
-                string filePath = "";
+                string filePath = @"..\..\..\Screenshots\";
                 DateTime time = DateTime.Now;
                 string dateToday = "_date_" + time.ToString("yyyy-MM-dd") + "_time_" + time.ToString("HH-mm-ss");
                 Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
@@ -69,11 +69,7 @@ namespace Tests
             }
         }
 
-        [TearDown] 
-        public void Close()
-        {
-            driver.Quit();
-        }
+
         
     }
 }
