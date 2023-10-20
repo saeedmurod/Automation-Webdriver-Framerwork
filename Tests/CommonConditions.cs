@@ -1,5 +1,5 @@
 using Core;
-using Core.Driver;
+using Core.DriverFactory;
 using OpenQA.Selenium;
 using Pages;
 using Pages.User;
@@ -16,7 +16,7 @@ namespace Tests
         public void Setup()
         {
             var browser = (Drivers)Enum.Parse(typeof(Drivers), Configuration.Model.Browser);
-            driver = DriverProvider.GetDriver(browser);
+            driver = DriverProvider.GetDriverFactory(browser).CreateDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmail.google.com&ec=GAlAFw&hl=en&service=mail&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1678429287%3A1696101771657405&theme=glif";
         }
@@ -60,7 +60,7 @@ namespace Tests
 
             catch
             {
-                string filePath = "C:\\Users\\Saidmurod\\source\\repos\\Tests\\Tests\\Screenshots\\";
+                string filePath = "";
                 DateTime time = DateTime.Now;
                 string dateToday = "_date_" + time.ToString("yyyy-MM-dd") + "_time_" + time.ToString("HH-mm-ss");
                 Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();

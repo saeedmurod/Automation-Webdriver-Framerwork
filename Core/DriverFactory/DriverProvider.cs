@@ -4,7 +4,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 
-namespace Core.Driver
+namespace Core.DriverFactory
 {
     public enum Drivers
     {
@@ -27,6 +27,19 @@ namespace Core.Driver
             };
 
         }
+
+
+        public static BaseDriverFactory GetDriverFactory(Drivers driver)
+        {
+            return driver switch
+            {
+                Drivers.Chrome => new ChromeDriverFactory(),
+                Drivers.Edge => new EdgeDriverFactory(),
+                Drivers.Firefox => new FirefoxDriverFactory()
+            };
+        }
+
+
         public static void CloseBrowser()
         {
             driver.Quit();
